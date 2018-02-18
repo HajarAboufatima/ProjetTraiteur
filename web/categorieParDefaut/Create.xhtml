@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CategorieParDefautCreateDlg" widgetVar="CategorieParDefautCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCategorieParDefautTitle}">
+            <h:form id="CategorieParDefautCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{categorieParDefautController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCategorieParDefautLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{categorieParDefautController.selected.libelle}" title="#{bundle.CreateCategorieParDefautTitle_libelle}" />
+                        <p:outputLabel value="#{bundle.CreateCategorieParDefautLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{categorieParDefautController.selected.id}" title="#{bundle.CreateCategorieParDefautTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{categorieParDefautController.create}" value="#{bundle.Save}" update="display,:CategorieParDefautListForm:datalist,:growl" oncomplete="handleSubmit(args,'CategorieParDefautCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CategorieParDefautCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

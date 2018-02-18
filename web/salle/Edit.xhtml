@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SalleEditDlg" widgetVar="SalleEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSalleTitle}">
+            <h:form id="SalleEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{salleController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSalleLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{salleController.selected.libelle}" title="#{bundle.EditSalleTitle_libelle}" />
+                        <p:outputLabel value="#{bundle.EditSalleLabel_teleFix}" for="teleFix" />
+                        <p:inputText id="teleFix" value="#{salleController.selected.teleFix}" title="#{bundle.EditSalleTitle_teleFix}" />
+                        <p:outputLabel value="#{bundle.EditSalleLabel_nbrTablesMin}" for="nbrTablesMin" />
+                        <p:inputText id="nbrTablesMin" value="#{salleController.selected.nbrTablesMin}" title="#{bundle.EditSalleTitle_nbrTablesMin}" />
+                        <p:outputLabel value="#{bundle.EditSalleLabel_nbrTablesMax}" for="nbrTablesMax" />
+                        <p:inputText id="nbrTablesMax" value="#{salleController.selected.nbrTablesMax}" title="#{bundle.EditSalleTitle_nbrTablesMax}" />
+                        <p:outputLabel value="#{bundle.EditSalleLabel_prixBase}" for="prixBase" />
+                        <p:inputText id="prixBase" value="#{salleController.selected.prixBase}" title="#{bundle.EditSalleTitle_prixBase}" />
+                        <p:outputLabel value="#{bundle.EditSalleLabel_magasin}" for="magasin" />
+                        <p:selectOneMenu id="magasin" value="#{salleController.selected.magasin}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{magasinController.itemsAvailableSelectOne}"
+                                           var="magasinItem"
+                                           itemValue="#{magasinItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditSalleLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{salleController.selected.id}" title="#{bundle.EditSalleTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{salleController.update}" value="#{bundle.Save}" update="display,:SalleListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SalleEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SalleEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

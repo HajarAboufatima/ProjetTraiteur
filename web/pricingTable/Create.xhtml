@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PricingTableCreateDlg" widgetVar="PricingTableCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePricingTableTitle}">
+            <h:form id="PricingTableCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pricingTableController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePricingTableLabel_prix}" for="prix" />
+                        <p:inputText id="prix" value="#{pricingTableController.selected.prix}" title="#{bundle.CreatePricingTableTitle_prix}" />
+                        <p:outputLabel value="#{bundle.CreatePricingTableLabel_typeTable}" for="typeTable" />
+                        <p:selectOneMenu id="typeTable" value="#{pricingTableController.selected.typeTable}" >
+                            <f:selectItems value="#{typeTableController.itemsAvailableSelectOne}"
+                                           var="typeTableItem"
+                                           itemValue="#{typeTableItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePricingTableLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{pricingTableController.selected.id}" title="#{bundle.CreatePricingTableTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pricingTableController.create}" value="#{bundle.Save}" update="display,:PricingTableListForm:datalist,:growl" oncomplete="handleSubmit(args,'PricingTableCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PricingTableCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

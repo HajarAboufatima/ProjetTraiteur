@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduitFeteCreateDlg" widgetVar="ProduitFeteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProduitFeteTitle}">
+            <h:form id="ProduitFeteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produitFeteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProduitFeteLabel_qteFete}" for="qteFete" />
+                        <p:inputText id="qteFete" value="#{produitFeteController.selected.qteFete}" title="#{bundle.CreateProduitFeteTitle_qteFete}" />
+                        <p:outputLabel value="#{bundle.CreateProduitFeteLabel_qteCasse}" for="qteCasse" />
+                        <p:inputText id="qteCasse" value="#{produitFeteController.selected.qteCasse}" title="#{bundle.CreateProduitFeteTitle_qteCasse}" />
+                        <p:outputLabel value="#{bundle.CreateProduitFeteLabel_produit}" for="produit" />
+                        <p:selectOneMenu id="produit" value="#{produitFeteController.selected.produit}" >
+                            <f:selectItems value="#{produitController.itemsAvailableSelectOne}"
+                                           var="produitItem"
+                                           itemValue="#{produitItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProduitFeteLabel_fete}" for="fete" />
+                        <p:selectOneMenu id="fete" value="#{produitFeteController.selected.fete}" >
+                            <f:selectItems value="#{feteController.itemsAvailableSelectOne}"
+                                           var="feteItem"
+                                           itemValue="#{feteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProduitFeteLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{produitFeteController.selected.id}" title="#{bundle.CreateProduitFeteTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produitFeteController.create}" value="#{bundle.Save}" update="display,:ProduitFeteListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProduitFeteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProduitFeteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

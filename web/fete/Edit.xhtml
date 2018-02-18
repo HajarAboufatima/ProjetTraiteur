@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FeteEditDlg" widgetVar="FeteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFeteTitle}">
+            <h:form id="FeteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{feteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFeteLabel_dateFete}" for="dateFete" />
+                        <p:calendar id="dateFete" pattern="MM/dd/yyyy" value="#{feteController.selected.dateFete}" title="#{bundle.EditFeteTitle_dateFete}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFeteLabel_avance}" for="avance" />
+                        <p:inputText id="avance" value="#{feteController.selected.avance}" title="#{bundle.EditFeteTitle_avance}" />
+                        <p:outputLabel value="#{bundle.EditFeteLabel_nbrDeTables}" for="nbrDeTables" />
+                        <p:inputText id="nbrDeTables" value="#{feteController.selected.nbrDeTables}" title="#{bundle.EditFeteTitle_nbrDeTables}" />
+                        <p:outputLabel value="#{bundle.EditFeteLabel_paiement}" for="paiement" />
+                        <p:selectOneMenu id="paiement" value="#{feteController.selected.paiement}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{paiementController.itemsAvailableSelectOne}"
+                                           var="paiementItem"
+                                           itemValue="#{paiementItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFeteLabel_salle}" for="salle" />
+                        <p:selectOneMenu id="salle" value="#{feteController.selected.salle}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{salleController.itemsAvailableSelectOne}"
+                                           var="salleItem"
+                                           itemValue="#{salleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFeteLabel_typeTable}" for="typeTable" />
+                        <p:selectOneMenu id="typeTable" value="#{feteController.selected.typeTable}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeTableController.itemsAvailableSelectOne}"
+                                           var="typeTableItem"
+                                           itemValue="#{typeTableItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFeteLabel_client}" for="client" />
+                        <p:selectOneMenu id="client" value="#{feteController.selected.client}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
+                                           var="clientItem"
+                                           itemValue="#{clientItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFeteLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{feteController.selected.id}" title="#{bundle.EditFeteTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{feteController.update}" value="#{bundle.Save}" update="display,:FeteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FeteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FeteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

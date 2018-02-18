@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SalleViewDlg" widgetVar="SalleViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSalleTitle}">
+            <h:form id="SalleViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{salleController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSalleLabel_libelle}"/>
+                        <h:outputText value="#{salleController.selected.libelle}" title="#{bundle.ViewSalleTitle_libelle}"/>
+                        <h:outputText value="#{bundle.ViewSalleLabel_teleFix}"/>
+                        <h:outputText value="#{salleController.selected.teleFix}" title="#{bundle.ViewSalleTitle_teleFix}"/>
+                        <h:outputText value="#{bundle.ViewSalleLabel_nbrTablesMin}"/>
+                        <h:outputText value="#{salleController.selected.nbrTablesMin}" title="#{bundle.ViewSalleTitle_nbrTablesMin}"/>
+                        <h:outputText value="#{bundle.ViewSalleLabel_nbrTablesMax}"/>
+                        <h:outputText value="#{salleController.selected.nbrTablesMax}" title="#{bundle.ViewSalleTitle_nbrTablesMax}"/>
+                        <h:outputText value="#{bundle.ViewSalleLabel_prixBase}"/>
+                        <h:outputText value="#{salleController.selected.prixBase}" title="#{bundle.ViewSalleTitle_prixBase}"/>
+                        <h:outputText value="#{bundle.ViewSalleLabel_magasin}"/>
+                        <h:outputText value="#{salleController.selected.magasin}" title="#{bundle.ViewSalleTitle_magasin}"/>
+                        <h:outputText value="#{bundle.ViewSalleLabel_id}"/>
+                        <h:outputText value="#{salleController.selected.id}" title="#{bundle.ViewSalleTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SalleViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

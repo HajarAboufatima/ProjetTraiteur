@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SalleCreateDlg" widgetVar="SalleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSalleTitle}">
+            <h:form id="SalleCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{salleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSalleLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{salleController.selected.libelle}" title="#{bundle.CreateSalleTitle_libelle}" />
+                        <p:outputLabel value="#{bundle.CreateSalleLabel_teleFix}" for="teleFix" />
+                        <p:inputText id="teleFix" value="#{salleController.selected.teleFix}" title="#{bundle.CreateSalleTitle_teleFix}" />
+                        <p:outputLabel value="#{bundle.CreateSalleLabel_nbrTablesMin}" for="nbrTablesMin" />
+                        <p:inputText id="nbrTablesMin" value="#{salleController.selected.nbrTablesMin}" title="#{bundle.CreateSalleTitle_nbrTablesMin}" />
+                        <p:outputLabel value="#{bundle.CreateSalleLabel_nbrTablesMax}" for="nbrTablesMax" />
+                        <p:inputText id="nbrTablesMax" value="#{salleController.selected.nbrTablesMax}" title="#{bundle.CreateSalleTitle_nbrTablesMax}" />
+                        <p:outputLabel value="#{bundle.CreateSalleLabel_prixBase}" for="prixBase" />
+                        <p:inputText id="prixBase" value="#{salleController.selected.prixBase}" title="#{bundle.CreateSalleTitle_prixBase}" />
+                        <p:outputLabel value="#{bundle.CreateSalleLabel_magasin}" for="magasin" />
+                        <p:selectOneMenu id="magasin" value="#{salleController.selected.magasin}" >
+                            <f:selectItems value="#{magasinController.itemsAvailableSelectOne}"
+                                           var="magasinItem"
+                                           itemValue="#{magasinItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSalleLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{salleController.selected.id}" title="#{bundle.CreateSalleTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{salleController.create}" value="#{bundle.Save}" update="display,:SalleListForm:datalist,:growl" oncomplete="handleSubmit(args,'SalleCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SalleCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FeteViewDlg" widgetVar="FeteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFeteTitle}">
+            <h:form id="FeteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{feteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFeteLabel_dateFete}"/>
+                        <h:outputText value="#{feteController.selected.dateFete}" title="#{bundle.ViewFeteTitle_dateFete}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFeteLabel_avance}"/>
+                        <h:outputText value="#{feteController.selected.avance}" title="#{bundle.ViewFeteTitle_avance}"/>
+                        <h:outputText value="#{bundle.ViewFeteLabel_nbrDeTables}"/>
+                        <h:outputText value="#{feteController.selected.nbrDeTables}" title="#{bundle.ViewFeteTitle_nbrDeTables}"/>
+                        <h:outputText value="#{bundle.ViewFeteLabel_paiement}"/>
+                        <h:outputText value="#{feteController.selected.paiement}" title="#{bundle.ViewFeteTitle_paiement}"/>
+                        <h:outputText value="#{bundle.ViewFeteLabel_salle}"/>
+                        <h:outputText value="#{feteController.selected.salle}" title="#{bundle.ViewFeteTitle_salle}"/>
+                        <h:outputText value="#{bundle.ViewFeteLabel_typeTable}"/>
+                        <h:outputText value="#{feteController.selected.typeTable}" title="#{bundle.ViewFeteTitle_typeTable}"/>
+                        <h:outputText value="#{bundle.ViewFeteLabel_client}"/>
+                        <h:outputText value="#{feteController.selected.client}" title="#{bundle.ViewFeteTitle_client}"/>
+                        <h:outputText value="#{bundle.ViewFeteLabel_id}"/>
+                        <h:outputText value="#{feteController.selected.id}" title="#{bundle.ViewFeteTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FeteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
