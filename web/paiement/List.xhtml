@@ -29,9 +29,23 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPaiementTitle_prix}"/>
+                                <h:outputText value="#{bundle.ListPaiementTitle_montant}"/>
                             </f:facet>
-                            <h:outputText value="#{item.prix}"/>
+                            <h:outputText value="#{item.montant}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaiementTitle_datePaiement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datePaiement}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPaiementTitle_fete}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fete}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

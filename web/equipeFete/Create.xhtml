@@ -12,8 +12,12 @@
             <h:form id="EquipeFeteCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{equipeFeteController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEquipeFeteLabel_categorie}" for="categorie" />
-                        <p:inputText id="categorie" value="#{equipeFeteController.selected.categorie}" title="#{bundle.CreateEquipeFeteTitle_categorie}" />
+                        <p:outputLabel value="#{bundle.CreateEquipeFeteLabel_categorieEquipe}" for="categorieEquipe" />
+                        <p:selectOneMenu id="categorieEquipe" value="#{equipeFeteController.selected.categorieEquipe}" >
+                            <f:selectItems value="#{categorieEquipeController.itemsAvailableSelectOne}"
+                                           var="categorieEquipeItem"
+                                           itemValue="#{categorieEquipeItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateEquipeFeteLabel_fete}" for="fete" />
                         <p:selectOneMenu id="fete" value="#{equipeFeteController.selected.fete}" >
                             <f:selectItems value="#{feteController.itemsAvailableSelectOne}"

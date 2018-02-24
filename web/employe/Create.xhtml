@@ -16,15 +16,9 @@
                         <p:inputText id="nom" value="#{employeController.selected.nom}" title="#{bundle.CreateEmployeTitle_nom}" />
                         <p:outputLabel value="#{bundle.CreateEmployeLabel_prenom}" for="prenom" />
                         <p:inputText id="prenom" value="#{employeController.selected.prenom}" title="#{bundle.CreateEmployeTitle_prenom}" />
-                        <p:outputLabel value="#{bundle.CreateEmployeLabel_equipeFete}" for="equipeFete" />
-                        <p:selectOneMenu id="equipeFete" value="#{employeController.selected.equipeFete}" >
-                            <f:selectItems value="#{equipeFeteController.itemsAvailableSelectOne}"
-                                           var="equipeFeteItem"
-                                           itemValue="#{equipeFeteItem}"/>
-                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateEmployeLabel_categorieParDefaut}" for="categorieParDefaut" />
                         <p:selectOneMenu id="categorieParDefaut" value="#{employeController.selected.categorieParDefaut}" >
-                            <f:selectItems value="#{categorieParDefautController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{categorieEquipeController.itemsAvailableSelectOne}"
                                            var="categorieParDefautItem"
                                            itemValue="#{categorieParDefautItem}"/>
                         </p:selectOneMenu>

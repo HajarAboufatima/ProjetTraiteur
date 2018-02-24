@@ -5,7 +5,7 @@
  */
 package service;
 
-import bean.CategorieParDefaut;
+import bean.EquipeEmploye;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author PC
  */
 @Stateless
-public class CategorieParDefautFacade extends AbstractFacade<CategorieParDefaut> {
+public class EquipeEmployeFacade extends AbstractFacade<EquipeEmploye> {
 
     @PersistenceContext(unitName = "projetTraiteurPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class CategorieParDefautFacade extends AbstractFacade<CategorieParDefaut>
         return em;
     }
 
-    public CategorieParDefautFacade() {
-        super(CategorieParDefaut.class);
+    public EquipeEmployeFacade() {
+        super(EquipeEmploye.class);
     }
     
 }

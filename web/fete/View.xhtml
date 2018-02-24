@@ -12,6 +12,8 @@
             <h:form id="FeteViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{feteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFeteLabel_montant}"/>
+                        <h:outputText value="#{feteController.selected.montant}" title="#{bundle.ViewFeteTitle_montant}"/>
                         <h:outputText value="#{bundle.ViewFeteLabel_dateFete}"/>
                         <h:outputText value="#{feteController.selected.dateFete}" title="#{bundle.ViewFeteTitle_dateFete}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -20,8 +22,6 @@
                         <h:outputText value="#{feteController.selected.avance}" title="#{bundle.ViewFeteTitle_avance}"/>
                         <h:outputText value="#{bundle.ViewFeteLabel_nbrDeTables}"/>
                         <h:outputText value="#{feteController.selected.nbrDeTables}" title="#{bundle.ViewFeteTitle_nbrDeTables}"/>
-                        <h:outputText value="#{bundle.ViewFeteLabel_paiement}"/>
-                        <h:outputText value="#{feteController.selected.paiement}" title="#{bundle.ViewFeteTitle_paiement}"/>
                         <h:outputText value="#{bundle.ViewFeteLabel_salle}"/>
                         <h:outputText value="#{feteController.selected.salle}" title="#{bundle.ViewFeteTitle_salle}"/>
                         <h:outputText value="#{bundle.ViewFeteLabel_typeTable}"/>

@@ -19,14 +19,13 @@ public class Employe implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    
+
     private String id;//CIN
     private String nom;
     private String prenom;
+
     @ManyToOne
-    private EquipeFete equipeFete;
-    @ManyToOne
-    private CategorieParDefaut categorieParDefaut;
+    private CategorieEquipe categorieParDefaut;
 
     public String getNom() {
         return nom;
@@ -44,22 +43,13 @@ public class Employe implements Serializable {
         this.prenom = prenom;
     }
 
-    public EquipeFete getEquipeFete() {
-        return equipeFete;
-    }
-
-    public void setEquipeFete(EquipeFete equipeFete) {
-        this.equipeFete = equipeFete;
-    }
-
-    public CategorieParDefaut getCategorieParDefaut() {
+    public CategorieEquipe getCategorieParDefaut() {
         return categorieParDefaut;
     }
 
-    public void setCategorieParDefaut(CategorieParDefaut categorieParDefaut) {
+    public void setCategorieParDefaut(CategorieEquipe categorieParDefaut) {
         this.categorieParDefaut = categorieParDefaut;
     }
-    
 
     public String getId() {
         return id;
@@ -93,5 +83,5 @@ public class Employe implements Serializable {
     public String toString() {
         return "bean.Employe[ id=" + id + " ]";
     }
-    
+
 }

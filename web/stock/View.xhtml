@@ -12,6 +12,8 @@
             <h:form id="StockViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{stockController.selected != null}">
+                        <h:outputText value="#{bundle.ViewStockLabel_qteDeffectuese}"/>
+                        <h:outputText value="#{stockController.selected.qteDeffectuese}" title="#{bundle.ViewStockTitle_qteDeffectuese}"/>
                         <h:outputText value="#{bundle.ViewStockLabel_qte}"/>
                         <h:outputText value="#{stockController.selected.qte}" title="#{bundle.ViewStockTitle_qte}"/>
                         <h:outputText value="#{bundle.ViewStockLabel_magasin}"/>

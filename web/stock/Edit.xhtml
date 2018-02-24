@@ -12,6 +12,8 @@
             <h:form id="StockEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{stockController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditStockLabel_qteDeffectuese}" for="qteDeffectuese" />
+                        <p:inputText id="qteDeffectuese" value="#{stockController.selected.qteDeffectuese}" title="#{bundle.EditStockTitle_qteDeffectuese}" />
                         <p:outputLabel value="#{bundle.EditStockLabel_qte}" for="qte" />
                         <p:inputText id="qte" value="#{stockController.selected.qte}" title="#{bundle.EditStockTitle_qte}" />
                         <p:outputLabel value="#{bundle.EditStockLabel_magasin}" for="magasin" />

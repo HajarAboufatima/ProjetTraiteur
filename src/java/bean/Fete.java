@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -22,20 +21,14 @@ import javax.persistence.Temporal;
 @Entity
 public class Fete implements Serializable {
 
-   
-
-    
-
     private static final long serialVersionUID = 1L;
     @Id
-   
     private String id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateFete;
     private Double avance;
     private int nbrDeTables;
-    @OneToOne
-    private Paiement paiement;
+    private Double montant;
     @ManyToOne
     private Salle salle;
     @OneToMany(mappedBy = "fete")
@@ -44,8 +37,27 @@ public class Fete implements Serializable {
     private TypeTable typeTable;
     @ManyToOne
     private Client client;
-     @OneToMany(mappedBy = "fete")
+    @OneToMany(mappedBy = "fete")
     private List<EquipeFete> equipeFetes;
+
+    @OneToMany(mappedBy = "fete")
+    private List<Paiement> paiements;
+
+    public Double getMontant() {
+        return montant;
+    }
+
+    public void setMontant(Double montant) {
+        this.montant = montant;
+    }
+
+    public List<Paiement> getPaiements() {
+        return paiements;
+    }
+
+    public void setPaiements(List<Paiement> paiements) {
+        this.paiements = paiements;
+    }
 
     public Date getDateFete() {
         return dateFete;
@@ -69,14 +81,6 @@ public class Fete implements Serializable {
 
     public void setNbrDeTables(int nbrDeTables) {
         this.nbrDeTables = nbrDeTables;
-    }
-
-    public Paiement getPaiement() {
-        return paiement;
-    }
-
-    public void setPaiement(Paiement paiement) {
-        this.paiement = paiement;
     }
 
     public Salle getSalle() {
@@ -118,8 +122,6 @@ public class Fete implements Serializable {
     public void setEquipeFetes(List<EquipeFete> equipeFetes) {
         this.equipeFetes = equipeFetes;
     }
-    
-    
 
     public String getId() {
         return id;
@@ -153,5 +155,5 @@ public class Fete implements Serializable {
     public String toString() {
         return "bean.Fete[ id=" + id + " ]";
     }
-    
+
 }

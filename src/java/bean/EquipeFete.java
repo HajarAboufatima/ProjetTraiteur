@@ -6,11 +6,9 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -19,34 +17,24 @@ import javax.persistence.OneToMany;
 @Entity
 public class EquipeFete implements Serializable {
 
-   
-
     private static final long serialVersionUID = 1L;
     @Id
-    
+
     private String id;
-    private String categorie;
-     @OneToMany(mappedBy = "equipeFete")
-    private List<Employe> employes;
-    
     @ManyToOne
-     private Fete fete;
+    private CategorieEquipe categorieEquipe;
+    @ManyToOne
+    private Fete fete;
 
-    public String getCategorie() {
-        return categorie;
+    public CategorieEquipe getCategorieEquipe() {
+        return categorieEquipe;
     }
 
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
+    public void setCategorieEquipe(CategorieEquipe categorieEquipe) {
+        this.categorieEquipe = categorieEquipe;
     }
 
-    public List<Employe> getEmployes() {
-        return employes;
-    }
-
-    public void setEmployes(List<Employe> employes) {
-        this.employes = employes;
-    }
+  
 
     public Fete getFete() {
         return fete;
@@ -88,5 +76,5 @@ public class EquipeFete implements Serializable {
     public String toString() {
         return "bean.EquipeFete[ id=" + id + " ]";
     }
-    
+
 }

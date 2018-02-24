@@ -8,6 +8,8 @@ package bean;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -17,48 +19,48 @@ import javax.persistence.Temporal;
  * @author PC
  */
 @Entity
-public class Paiement implements Serializable {
+public class EquipeEmploye implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    
-    private String id;
-    private Double montant;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date datePaiement;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @ManyToOne
-    private Fete fete;
+    private EquipeFete equipeFete;
+    @ManyToOne
+    private Employe employe;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateAffectation;
 
-    public Double getMontant() {
-        return montant;
+    public EquipeFete getEquipeFete() {
+        return equipeFete;
     }
 
-    public void setMontant(Double montant) {
-        this.montant = montant;
+    public void setEquipeFete(EquipeFete equipeFete) {
+        this.equipeFete = equipeFete;
     }
 
-    public Date getDatePaiement() {
-        return datePaiement;
+    public Employe getEmploye() {
+        return employe;
     }
 
-    public void setDatePaiement(Date datePaiement) {
-        this.datePaiement = datePaiement;
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
     }
 
-    public Fete getFete() {
-        return fete;
+    public Date getDateAffectation() {
+        return dateAffectation;
     }
 
-    public void setFete(Fete fete) {
-        this.fete = fete;
+    public void setDateAffectation(Date dateAffectation) {
+        this.dateAffectation = dateAffectation;
     }
-    
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -72,10 +74,10 @@ public class Paiement implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Paiement)) {
+        if (!(object instanceof EquipeEmploye)) {
             return false;
         }
-        Paiement other = (Paiement) object;
+        EquipeEmploye other = (EquipeEmploye) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -84,7 +86,7 @@ public class Paiement implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Paiement[ id=" + id + " ]";
+        return "bean.EquipeEmploye[ id=" + id + " ]";
     }
-    
+
 }

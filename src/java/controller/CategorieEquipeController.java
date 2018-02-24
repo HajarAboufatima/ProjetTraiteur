@@ -1,9 +1,9 @@
 package controller;
 
-import bean.CategorieParDefaut;
+import bean.CategorieEquipe;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
-import service.CategorieParDefautFacade;
+import service.CategorieEquipeFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("categorieParDefautController")
+@Named("categorieEquipeController")
 @SessionScoped
-public class CategorieParDefautController implements Serializable {
+public class CategorieEquipeController implements Serializable {
 
     @EJB
-    private service.CategorieParDefautFacade ejbFacade;
-    private List<CategorieParDefaut> items = null;
-    private CategorieParDefaut selected;
+    private service.CategorieEquipeFacade ejbFacade;
+    private List<CategorieEquipe> items = null;
+    private CategorieEquipe selected;
 
-    public CategorieParDefautController() {
+    public CategorieEquipeController() {
     }
 
-    public CategorieParDefaut getSelected() {
+    public CategorieEquipe getSelected() {
         return selected;
     }
 
-    public void setSelected(CategorieParDefaut selected) {
+    public void setSelected(CategorieEquipe selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class CategorieParDefautController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private CategorieParDefautFacade getFacade() {
+    private CategorieEquipeFacade getFacade() {
         return ejbFacade;
     }
 
-    public CategorieParDefaut prepareCreate() {
-        selected = new CategorieParDefaut();
+    public CategorieEquipe prepareCreate() {
+        selected = new CategorieEquipe();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("CategorieParDefautCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("CategorieEquipeCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("CategorieParDefautUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("CategorieEquipeUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("CategorieParDefautDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("CategorieEquipeDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<CategorieParDefaut> getItems() {
+    public List<CategorieEquipe> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,29 +109,29 @@ public class CategorieParDefautController implements Serializable {
         }
     }
 
-    public CategorieParDefaut getCategorieParDefaut(java.lang.String id) {
+    public CategorieEquipe getCategorieEquipe(java.lang.String id) {
         return getFacade().find(id);
     }
 
-    public List<CategorieParDefaut> getItemsAvailableSelectMany() {
+    public List<CategorieEquipe> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<CategorieParDefaut> getItemsAvailableSelectOne() {
+    public List<CategorieEquipe> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = CategorieParDefaut.class)
-    public static class CategorieParDefautControllerConverter implements Converter {
+    @FacesConverter(forClass = CategorieEquipe.class)
+    public static class CategorieEquipeControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CategorieParDefautController controller = (CategorieParDefautController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "categorieParDefautController");
-            return controller.getCategorieParDefaut(getKey(value));
+            CategorieEquipeController controller = (CategorieEquipeController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "categorieEquipeController");
+            return controller.getCategorieEquipe(getKey(value));
         }
 
         java.lang.String getKey(String value) {
@@ -151,11 +151,11 @@ public class CategorieParDefautController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof CategorieParDefaut) {
-                CategorieParDefaut o = (CategorieParDefaut) object;
+            if (object instanceof CategorieEquipe) {
+                CategorieEquipe o = (CategorieEquipe) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), CategorieParDefaut.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), CategorieEquipe.class.getName()});
                 return null;
             }
         }

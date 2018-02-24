@@ -12,19 +12,14 @@
             <h:form id="FeteEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{feteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFeteLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{feteController.selected.montant}" title="#{bundle.EditFeteTitle_montant}" />
                         <p:outputLabel value="#{bundle.EditFeteLabel_dateFete}" for="dateFete" />
                         <p:calendar id="dateFete" pattern="MM/dd/yyyy" value="#{feteController.selected.dateFete}" title="#{bundle.EditFeteTitle_dateFete}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditFeteLabel_avance}" for="avance" />
                         <p:inputText id="avance" value="#{feteController.selected.avance}" title="#{bundle.EditFeteTitle_avance}" />
                         <p:outputLabel value="#{bundle.EditFeteLabel_nbrDeTables}" for="nbrDeTables" />
                         <p:inputText id="nbrDeTables" value="#{feteController.selected.nbrDeTables}" title="#{bundle.EditFeteTitle_nbrDeTables}" />
-                        <p:outputLabel value="#{bundle.EditFeteLabel_paiement}" for="paiement" />
-                        <p:selectOneMenu id="paiement" value="#{feteController.selected.paiement}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{paiementController.itemsAvailableSelectOne}"
-                                           var="paiementItem"
-                                           itemValue="#{paiementItem}"/>
-                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditFeteLabel_salle}" for="salle" />
                         <p:selectOneMenu id="salle" value="#{feteController.selected.salle}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>

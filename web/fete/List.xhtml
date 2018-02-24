@@ -29,6 +29,12 @@
 
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeteTitle_montant}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montant}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFeteTitle_dateFete}"/>
                             </f:facet>
                             <h:outputText value="#{item.dateFete}">
@@ -46,12 +52,6 @@
                                 <h:outputText value="#{bundle.ListFeteTitle_nbrDeTables}"/>
                             </f:facet>
                             <h:outputText value="#{item.nbrDeTables}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFeteTitle_paiement}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.paiement}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

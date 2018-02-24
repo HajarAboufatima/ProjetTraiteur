@@ -12,8 +12,14 @@
             <h:form id="PaiementViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{paiementController.selected != null}">
-                        <h:outputText value="#{bundle.ViewPaiementLabel_prix}"/>
-                        <h:outputText value="#{paiementController.selected.prix}" title="#{bundle.ViewPaiementTitle_prix}"/>
+                        <h:outputText value="#{bundle.ViewPaiementLabel_montant}"/>
+                        <h:outputText value="#{paiementController.selected.montant}" title="#{bundle.ViewPaiementTitle_montant}"/>
+                        <h:outputText value="#{bundle.ViewPaiementLabel_datePaiement}"/>
+                        <h:outputText value="#{paiementController.selected.datePaiement}" title="#{bundle.ViewPaiementTitle_datePaiement}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPaiementLabel_fete}"/>
+                        <h:outputText value="#{paiementController.selected.fete}" title="#{bundle.ViewPaiementTitle_fete}"/>
                         <h:outputText value="#{bundle.ViewPaiementLabel_id}"/>
                         <h:outputText value="#{paiementController.selected.id}" title="#{bundle.ViewPaiementTitle_id}"/>
                     </p:panelGrid>

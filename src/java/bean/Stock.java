@@ -23,10 +23,19 @@ public class Stock implements Serializable {
     
     private String id;
     private Long qte;
+    private Long qteDeffectuese;
     @ManyToOne
     private Magasin magasin;
     @OneToOne
     private Produit produit;
+
+    public Long getQteDeffectuese() {
+        return qteDeffectuese;
+    }
+
+    public void setQteDeffectuese(Long qteDeffectuese) {
+        this.qteDeffectuese = qteDeffectuese;
+    }
 
     public Long getQte() {
         return qte;

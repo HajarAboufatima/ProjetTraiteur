@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
  * @author PC
  */
 @Entity
-public class CategorieParDefaut implements Serializable {
+public class CategorieEquipe implements Serializable {
 
     
 
@@ -63,10 +63,10 @@ public class CategorieParDefaut implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CategorieParDefaut)) {
+        if (!(object instanceof CategorieEquipe)) {
             return false;
         }
-        CategorieParDefaut other = (CategorieParDefaut) object;
+        CategorieEquipe other = (CategorieEquipe) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
